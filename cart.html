@@ -40,10 +40,10 @@
       </tr>
       <tr>
         <td>
-          <div>R$ 29,90</div>
+          <div id="produto">R$ 29,90</div>
         </td>
         <td>
-          <input type="number">
+          <input id="quantidade" type="number">
         </td>
       </tr>
       <tr>
@@ -54,7 +54,17 @@
     </table>
   </body>
   <script type="text/javascript">
-    $('.dropdown-toggle').dropdown();
+
+    writeTotal();
+
+    function writeTotal() {
+      var produto = document.getElementById("produto");
+      var quantidade = document.getElementById("quantidade");
+      var total = document.getElementById("total");
+      total = produto * quantidade;
+      total.innerHTML = floatToMoneyText(total);
+    }
+
     function moneyTextToFloat (text) {
       var cleanText = text.replace("R$ ","").replace(",",".");
       return parseFloat(cleanText);
