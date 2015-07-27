@@ -7,27 +7,54 @@
     <link rel="stylesheet" href="Assets/css/bootstrap.min.css">
   </head>
   <body class="container">
-    <table>
-      <tbody>
-        <tr>
-          <td>
-            <div>R$ 29,90</div>
-          </td>
-          <td>
-            <input type="number">
-          </td>
-        </tr>
-      </tbody>
+
+    <!--Navigation menu-->
+    <div class="masthead">
+      <h3 class="text-muted">Music Shop</h3>
+      <nav class="navbar navbar-default">
+        <ul class="nav nav-tabs nav-justified">
+          <li class="active"><a href="#">Home</a></li>
+          <li role="presentation" class="dropdown">
+            <a class="dropdown-toggle" data-toggle="dropdown" href="#" role="button"
+              aria-haspopup="true" aria-expanded="false">Genêros <span class="caret"></span>
+            </a>
+              <ul class="dropdown-menu">Clássico</ul>
+              <ul class="dropdown-menu">Bossa Nova</ul>
+          </li>
+          <li><a href="#">Promoções</a></li>
+          <li><a href="#">Sobre</a></li>
+        </ul>
+      </nav>
+    </div>
+
+    <!--Jumbotron-->
+    <div class="jumbotron">
+      <img src="Images/logo.png" alt="" class="img-responsive center-block">
+    </div>
+
+    <table class="table table-bordered">
+      <tr>
+        <td>Produto</td>
+        <td>Quantidade</td>
+        <td>Total</td>
+      </tr>
+      <tr>
+        <td>
+          <div>R$ 29,90</div>
+        </td>
+        <td>
+          <input type="number">
+        </td>
+      </tr>
       <tr>
         <td></td>
         <td>Total da compra</td>
         <td><div id="total">R$ 29,90</div></td>
-        <td></td>
       </tr>
     </table>
   </body>
   <script type="text/javascript">
-
+    $('.dropdown-toggle').dropdown();
     function moneyTextToFloat (text) {
       var cleanText = text.replace("R$ ","").replace(",",".");
       return parseFloat(cleanText);
