@@ -18,28 +18,22 @@
     }
   }
 
-  var produtos = document.getElementsByClassName("produto");
-
   function calculateTotalProducts() {
-    var totalProdutos = 0;
-    for (var pos = 0; pos < produtos.length; pos++) {
-      var priceElements = produtos[pos].getElementsByClassName("price");
-      var priceText = priceElements[0].innerHTML;
-      var price = moneyTextToFloat(priceText);
+    var total = 0;
+    var produtos = $(".produto");
 
-      var qtyElements = produtos[pos].getElementsByClassName("quantity");
-      var qtyText = qtyElements[0].value;
-      var quantity = moneyTextToFloat(qtyText);
-
-      var subtotal = quantity * price;
-      totalProdutos += subtotal;
-    }
-    return totalProdutos;
+    $(produtos).each(function (pos, produto) {
+      var $produto = $(produto);
+      var quantity = moneyTextToFloat ($produto.find(".quantity").val());
+      var price = moneyTextToFloat ($produto.find(".price").text());
+      total += quantity * price;
+    });
+    return total;
   }
 
   function writeTotal(value) {
-    var total = document.getElementById("total");
-    total.innerHTML = floatToMoneyText(value);
+    var text = floatToMoneyText(value);
+    $("#total").text(text);
   }
 
   function moneyTextToFloat (text) {
@@ -54,8 +48,8 @@
   }
 
   function readTotal () {
-    var total = document.getElementById("total");
-    return moneyTextToFloat(total.innerHTML);
+    var total = $("#total").text();
+    return moneyTextToFloat(total);
   }
 
   function onDocumentLoad () {
