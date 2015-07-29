@@ -52,15 +52,8 @@
     return moneyTextToFloat(total);
   }
 
-  function onDocumentLoad () {
-    var textEdits = document.getElementsByClassName("quantity");
-
-    for (var i = 0; i < textEdits.length; i++) {
-      textEdits[i].onchange = function () {
-        writeTotal(calculateTotalProducts());
-      };
-    }
-
-  }
-
-  window.onload = onDocumentLoad;
+  $(function () {
+    $(".quantity").change(function () {
+      writeTotal(calculateTotalProducts());
+    });
+  });
